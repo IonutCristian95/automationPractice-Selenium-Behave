@@ -34,12 +34,12 @@ class SignInPage(Browser):
         password_input.clear()
         password_input.send_keys(password)
 
-    def click_sign_in_button(self):
+    def click_sign_in_btn(self):
         self.driver.find_element_by_xpath(SignInPageElements.SIGN_IN_BUTTON).click()
 
     def sign_in(self, email, password):
         self.sign_in_email_input(email)
         self.sign_in_password_input(password)
         sleep(2)
-        self.click_sign_in_button()
+        self.click_sign_in_btn()
 

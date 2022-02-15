@@ -59,6 +59,21 @@ def step_impl(context):
     # Proceeds to complete the required information
     context.cart_page.proceed_to_checkout_button()
 
+
 @when('automationPractice: user is already logged in')
 def step_impl(context):
     context.automationPractice_page.is_user_already_logged_in()
+
+
+@when('automationPractice: user clicks on the Sign In button')
+def step_impl(context):
+    context.automationPractice_page.click_sign_in_button()
+
+
+@when('automationPractice: user clicks on the account management button')
+def step_impl(context):
+    context.automationPractice_page.click_account_management_button()
+
+
+
+

@@ -104,3 +104,15 @@ class AutomationPracticePage(Browser):
             assert True
         else:
             assert False
+
+    def click_sign_in_button(self):
+        sign_in_btn = WebDriverWait(self.driver, 7000).until(
+            EC.presence_of_element_located((By.XPATH, AutomationPracticeElements.SIGN_IN_BUTTON))
+        )
+        sign_in_btn.click()
+
+    def click_account_management_button(self):
+        account_btn = WebDriverWait(self.driver, 5000).until(
+            EC.presence_of_element_located((By.XPATH, AutomationPracticeElements.ACCOUNT_MANAGEMENT_BUTTON))
+        )
+        account_btn.click()

@@ -1,5 +1,6 @@
 from features.browser import Browser
 
+
 class AccountDetailsElements(object):
     ORDER_HISTORY = '(//ul[contains(@class, "myaccount")]//li)[1]'
     PERSONAL_INFORMATION = '(//ul[contains(@class, "myaccount")]//li)[4]'
@@ -15,5 +16,16 @@ class AccountDetails(Browser):
     def navigate_to_account_details_page(self):
         self.driver.get('http://automationpractice.com/index.php?controller=my-account')
 
+    def confirm_account_details_page_displayed(self):
+        """
+            This method will assert True if the current page displayed is the one for user's account
+            otherwise it will assert False
+        """
+        assert "controller=my-account" in self.driver.current_url
+
     def confirm_wishlist_delete(self):
         self.driver.switch_to().alert().accept()
+
+    def view_order_history(self):
+        self.driver.find_element_by_xpath()
+

@@ -4,6 +4,7 @@ from features.pages.automationPractice_page import AutomationPracticePage
 from features.pages.cart_page import CartPage
 from features.pages.sign_in_page import SignInPage
 from features.pages.forgot_password_page import ForgotPasswordPage
+from features.pages.account_details_page import AccountDetails
 
 def before_all(context):
     context.email = get_user_credentials()[0]
@@ -14,6 +15,7 @@ def before_all(context):
     context.sign_in_page = SignInPage()
     context.forgot_password_page = ForgotPasswordPage()
     context.automationPractice_page = AutomationPracticePage()
+    context.account_details_page = AccountDetails()
     context.automationPractice_page.navigate_to_automationPractice_main_page()
 
 

@@ -22,26 +22,33 @@ Feature: automationPractice Main Page test
         And cartPage: shopping cart is empty
 
     Scenario: User successfully adds a product and completes the order using bankwire payment method
-      When automationPractice: user adds a product in cart
-      Then automationPractice: user proceeds to checkout
-      When signInPage: user successfully logs in
-      Then cartPage: user completes the required information
-      Then cartPage: user makes the order and pays by bankwire
+        When automationPractice: user adds a product in cart
+        Then automationPractice: user proceeds to checkout
+        When signInPage: user successfully logs in
+        Then cartPage: user completes the required information
+        Then cartPage: user makes the order and pays by bankwire
 
 
     Scenario: User successfully adds a product and completes the order using cheque payment method
-      When automationPractice: user adds a product in cart
-      Then automationPractice: user proceeds to checkout
-      When automationPractice: user is already logged in
-      Then cartPage: user completes the required information
-      Then cartPage: user makes the order and pays by cheque
+        When automationPractice: user adds a product in cart
+        Then automationPractice: user proceeds to checkout
+        When automationPractice: user is already logged in
+        Then cartPage: user completes the required information
+        Then cartPage: user makes the order and pays by cheque
 
-#    @smoke2
+
+    Scenario: User is accessing the account management page through the main page
+        When automationPractice: user clicks on the Sign In button
+        When signInPage: user successfully logs in
+        When automationPractice: user clicks on the account management button
+        Then accountDetailsPage: user is on the account management page
+
+#    @smoke3
 #    Scenario: User checks for two orders, one paid by bankwire, one by cheque
-#      When automationPractice: user clicks on Sign In button
-#      Then signInPage: user successfully logs in
-#      When automationPractice: user clicks on the account management button
-#      Then accountDetailsPage: user proceeds to account management page
+#        When automationPractice: user is already logged in
+#        Then automationPractice: user clicks on the account management button
+#        When accountDetailsPage: user clicks on "order history and details" button
+#        Then accountDetailsPage: user will view current orders - one paid by bankwire and one by cheque
 
     @smoke4
     Scenario: User successfully logs in
