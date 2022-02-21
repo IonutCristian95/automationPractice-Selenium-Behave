@@ -2,7 +2,7 @@ from behave import *
 
 from time import sleep
 
-@then('cartPage: user completes the required information')
+@when('cartPage: user completes the required information')
 def step_impl(context):
     context.cart_page.procees_address()
     sleep(1)
@@ -14,7 +14,7 @@ def step_impl(context):
     context.cart_page.is_alert_active_empty_cart()
 
 
-@then('cartPage: user deletes the product from the cart')
+@when('cartPage: user deletes the product from the cart')
 def step_impl(context):
     context.cart_page.delete_a_specific_product(1)
     sleep(3)
