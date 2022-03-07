@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from time import sleep
 
+
 class SignInPageElements(object):
     SIGN_IN_EMAIL = '//form[@id="login_form"]//label[@for="email"]//following-sibling::input'
     SIGN_IN_PASSWORD = '//form[@id="login_form"]//label[@for="passwd"]//following-sibling::span//input'
@@ -38,8 +39,11 @@ class SignInPage(Browser):
         self.driver.find_element_by_xpath(SignInPageElements.SIGN_IN_BUTTON).click()
 
     def sign_in(self, email, password):
-        self.sign_in_email_input(email)
-        self.sign_in_password_input(password)
-        sleep(2)
-        self.click_sign_in_btn()
+        if "authentication" not in self.driver.current_url:
+            assert True
+        else:
+            self.sign_in_email_input(email)
+            self.sign_in_password_input(password)
+            sleep(2)
+            self.click_sign_in_btn()
 

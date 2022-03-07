@@ -2,7 +2,7 @@ from features.browser import Browser
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-
+from time import sleep
 
 class CartPageElements(object):
     INCREASE_QUANTITY_BUTTON = '//a[@title="Add"]'
@@ -16,7 +16,7 @@ class CartPageElements(object):
     TERMS_OF_SERVICE_CHECKBOX = '//input[@id="cgv"]'
     PAYMENT_METHOD_BANKWIRE = '//a[@class="bankwire"]'
     PAYMENT_METHOD_CHEQUE = '//a[@class="cheque"]'
-    CONFIRM_ORDER_BUTTON = '//span[contains(text(), "confirm")]//parent::button'
+    CONFIRM_ORDER_BUTTON = '//span[contains(., "I confirm my order")]//parent::button'
     ORDER_CONFIRMATION = '//div[@class="box"]//ancestor::*[contains(text(), "complete") and contains(text(), "order")]'
     ALERT_TERMS_OF_SERVICE = '//*[@class="fancybox-error" and contains(. , "must agree to the terms of service")]'
     ALERT_TERMS_OF_SERVICE_CLOSE_BUTTON = '//a[@title="Close"]'
@@ -47,13 +47,22 @@ class CartPage(Browser):
         assert alert_element.is_displayed()
 
     def proceed_to_checkout_button(self):
-        self.driver.find_element_by_xpath(CartPageElements.PROCEED_TO_CHECKOUT).click()
+        proceed_to_checkout_btn = WebDriverWait(self.driver, 5000).until(
+            EC.presence_of_element_located((By.XPATH, CartPageElements.PROCEED_TO_CHECKOUT))
+        )
+        proceed_to_checkout_btn.click()
 
     def procees_address(self):
-        self.driver.find_element_by_xpath(CartPageElements.PROCESS_ADDRESS_BUTTON).click()
+        process_address_btn = WebDriverWait(self.driver, 5000).until(
+            EC.presence_of_element_located((By.XPATH, CartPageElements.PROCESS_ADDRESS_BUTTON))
+        )
+        process_address_btn.click()
 
     def procees_carrier(self):
-        self.driver.find_element_by_xpath(CartPageElements.PROCESS_CARRIER_BUTTON).click()
+        process_carrier_btn = WebDriverWait(self.driver, 5000).until(
+            EC.presence_of_element_located((By.XPATH, CartPageElements.PROCESS_CARRIER_BUTTON))
+        )
+        process_carrier_btn.click()
 
     def accept_terms_of_service(self):
         checkbox = self.driver.find_element_by_xpath(CartPageElements.TERMS_OF_SERVICE_CHECKBOX)
@@ -97,3 +106,19 @@ class CartPage(Browser):
             assert True
         else:
             assert False
+
+    def delete_products_in_cart(self):
+        products_list = self.driver.find_elements_by_xpath(CartPageElements.PRODUCT_IN_CART)
+        for i in range(len(products_list)):
+            try:
+                self.delete_a_specific_product(0)
+            except Exception as e:
+                print(e)
+                return
+            sleep(1500)
+
+    def click_confirm_order_btn(self):
+        confirm_btn = WebDriverWait(self.driver, 5000).until(
+            EC.presence_of_element_located((By.XPATH, CartPageElements.CONFIRM_ORDER_BUTTON))
+        )
+        confirm_btn.click()

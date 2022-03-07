@@ -19,6 +19,14 @@ class AutomationPracticeElements(object):
     SIGN_IN_BUTTON = '//a[@class="login" and contains(text(), "Sign in")]'
     SIGN_OUT_BUTTON = '//a[@class="logout" and @title="Log me out"]'
     ACCOUNT_MANAGEMENT_BUTTON = '//a[@class="account"]'
+    ADDED_TO_WISHLIST_POPUP = '//p[contains(text(), "Added to your wishlist")]'
+    NEWSLETTER_INPUT_BOX = '//input[@id="newsletter-input"]'
+    NEWSLETTER_BUTTON = '//input[@id="newsletter-input"]//following-sibling::button[@name="submitNewsletter"]'
+    NEWSLETTER_CONFIRMATION = '//p[contains(text(), "You have successfully subscribed to this newsletter")]'
+    NEWSLETTER_ALREADY_SUBSCRIBED_ALERT = '//p[contains(@class, "alert-danger") and contains(., "email address is ' \
+                                          'already registered")] '
+    NEWSLETTER_INVALID_EMAIL_ALERT = '//p[contains(text(), "Invalid email address.")]'
+
 
 class AutomationPracticePage(Browser):
     def navigate_to_automationPractice_main_page(self):
@@ -26,7 +34,6 @@ class AutomationPracticePage(Browser):
 
     def get_page_title(self):
         return self.driver.title
-
 
     # The "product" parameter is the product number in the list : integer
     def add_to_cart(self, product):
@@ -69,7 +76,7 @@ class AutomationPracticePage(Browser):
             assert False
 
     def click_sign_in_button(self):
-        sign_in_btn = WebDriverWait(self.driver, 7000).until(
+        sign_in_btn = WebDriverWait(self.driver, 5000).until(
             EC.presence_of_element_located((By.XPATH, AutomationPracticeElements.SIGN_IN_BUTTON))
         )
         sign_in_btn.click()
@@ -79,3 +86,56 @@ class AutomationPracticePage(Browser):
             EC.presence_of_element_located((By.XPATH, AutomationPracticeElements.ACCOUNT_MANAGEMENT_BUTTON))
         )
         account_btn.click()
+
+    def insert_email_newsletter(self, email):
+        newsletter_input_box = WebDriverWait(self.driver, 5000).until(
+            EC.presence_of_element_located((By.XPATH, AutomationPracticeElements.NEWSLETTER_INPUT_BOX))
+        )
+        newsletter_input_box.clear()
+        newsletter_input_box.send_keys(email)
+
+    def click_subscribe_newsletter_button(self):
+        self.driver.find_element_by_xpath(AutomationPracticeElements.NEWSLETTER_BUTTON).click()
+
+    def newsletter_confirmation_message(self):
+        confirmation_message_alert = WebDriverWait(self.driver, 5000).until(
+            EC.presence_of_element_located((By.XPATH, AutomationPracticeElements.NEWSLETTER_CONFIRMATION))
+        )
+        assert confirmation_message_alert.is_displayed()
+
+    def newsletter_already_subscribed_alert(self):
+        confirmation_message_alert = WebDriverWait(self.driver, 5000).until(
+            EC.presence_of_element_located((By.XPATH, AutomationPracticeElements.NEWSLETTER_ALREADY_SUBSCRIBED_ALERT))
+        )
+        assert confirmation_message_alert.is_displayed()
+
+    def newsletter_invalid_email_error(self):
+        invalid_email_message = WebDriverWait(self.driver, 5000).until(
+            EC.presence_of_element_located((By.XPATH, AutomationPracticeElements.NEWSLETTER_INVALID_EMAIL_ALERT))
+        )
+        assert invalid_email_message.is_displayed()
+
+    def user_logged_out(self):
+        """
+        This function will disconnect the user if he is logged in
+        """
+        sign_out_btn = self.driver.find_elements_by_xpath(AutomationPracticeElements.SIGN_OUT_BUTTON)
+        if len(sign_out_btn) > 0:
+            sign_out_btn[0].click()
+        # else:
+        #     assert True
+
+    def logged_in_facilities_present(self):
+        """
+            The log out button and account management button confirm that the user is logged in
+        """
+        account_management_btn = WebDriverWait(self.driver, 3000).until(
+            EC.presence_of_element_located((By.XPATH, AutomationPracticeElements.ACCOUNT_MANAGEMENT_BUTTON))
+        )
+        log_out_btn = WebDriverWait(self.driver, 3000).until(
+            EC.presence_of_element_located((By.XPATH, AutomationPracticeElements.SIGN_OUT_BUTTON))
+        )
+        if account_management_btn and log_out_btn:
+            assert True
+        else:
+            assert False

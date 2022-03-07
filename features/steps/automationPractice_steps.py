@@ -3,7 +3,7 @@ from time import sleep
 from behave import *
 
 
-@given('automationPractice: user in on the main page')
+@given('automationPractice: user is on the main page')
 def step_impl(context):
     context.automationPractice_page.navigate_to_automationPractice_main_page()
 
@@ -59,5 +59,36 @@ def step_impl(context):
     context.automationPractice_page.click_account_management_button()
 
 
+@when('automationPractice: user inserts the email address "{email}"')
+def step_impl(context, email):
+    context.automationPractice_page.insert_email_newsletter(email)
 
 
+@when('automationPractice: user clicks the newsletter subscription button')
+def step_impl(context):
+    context.automationPractice_page.click_subscribe_newsletter_button()
+
+
+@then('automationPractice: newsletter subscription confirmation message appears')
+def step_impl(context):
+    context.automationPractice_page.newsletter_confirmation_message()
+
+
+@then('automationPractice: already subscribed alert message appears')
+def step_impl(context):
+    context.automationPractice_page.newsletter_already_subscribed_alert()
+
+
+@then('automationPractice: invalid email address error message appears')
+def step_impl(context):
+    context.automationPractice_page.newsletter_invalid_email_error()
+
+
+@when('automationPractice: user is not logged in')
+def step_impl(context):
+    context.automationPractice_page.user_logged_out()
+
+
+@then('automationPractice: user gains access to his account')
+def step_impl(context):
+    context.automationPractice_page.logged_in_facilities_present()
