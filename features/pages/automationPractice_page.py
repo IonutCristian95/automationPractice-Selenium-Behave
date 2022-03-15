@@ -122,8 +122,8 @@ class AutomationPracticePage(Browser):
         sign_out_btn = self.driver.find_elements_by_xpath(AutomationPracticeElements.SIGN_OUT_BUTTON)
         if len(sign_out_btn) > 0:
             sign_out_btn[0].click()
-        # else:
-        #     assert True
+        # if sign_out_btn:
+        #     sign_out_btn.click()
 
     def logged_in_facilities_present(self):
         """

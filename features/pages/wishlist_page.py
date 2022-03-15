@@ -15,7 +15,6 @@ class WishlistPageElements(object):
     HOME_BTN = '//span[contains(., "Home")]//parent::a'
 
 
-
 class WishlistPage(Browser):
     def navigate_to_wishlist_page(self):
         self.driver.get("http://automationpractice.com/index.php?fc=module&module=blockwishlist&controller=mywishlist")

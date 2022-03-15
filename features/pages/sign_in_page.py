@@ -9,13 +9,17 @@ class SignInPageElements(object):
     SIGN_IN_EMAIL = '//form[@id="login_form"]//label[@for="email"]//following-sibling::input'
     SIGN_IN_PASSWORD = '//form[@id="login_form"]//label[@for="passwd"]//following-sibling::span//input'
     SIGN_IN_BUTTON = '//button[@id="SubmitLogin"]'
-    FORGOT_PASSWORD_REF = '//p[contains(@class, "lost_password")]'
+    FORGOT_PASSWORD_BUTTON = '//p[contains(@class, "lost_password")]//a'
     CREATE_ACCOUNT_EMAIL = '//input[@id="email_create"]'
     CREATE_ACCOUNT_BUTTON = '//button[@id="SubmitCreate"]'
     # Error encountered when creating an account
     ERROR_CREATE_ACCOUNT_EMAIL = '//*[contains(@id, "create_account_error")]'
-    # Error encountered when signing in
+    # Errors encountered when signing in
     ERROR_INVALID_EMAIL = '//li[contains(text(), "Invalid email")]'
+    ERROR_EMAIL_ADDRESS_REQUIRED = '//li[contains(text(), "email address required")]'
+    ERROR_PASSWORD_REQUIRED = '//li[contains(text(), "Password is required")]'
+    ERROR_AUTHENTICATION_FAILED = '//li[contains(text(), "Authentication failed")]'
+
 
 class SignInPage(Browser):
     def navigate_to_sign_in_page(self):
@@ -39,6 +43,11 @@ class SignInPage(Browser):
         self.driver.find_element_by_xpath(SignInPageElements.SIGN_IN_BUTTON).click()
 
     def sign_in(self, email, password):
+        if email == "N/A":
+            email = ""
+        if password == "N/A":
+            password = ""
+
         if "authentication" not in self.driver.current_url:
             assert True
         else:
@@ -47,3 +56,29 @@ class SignInPage(Browser):
             sleep(2)
             self.click_sign_in_btn()
 
+    def click_forgot_password_option(self):
+        forgot_password_option_button = WebDriverWait(self.driver, 3).until(
+            EC.presence_of_element_located((By.XPATH, SignInPageElements.FORGOT_PASSWORD_BUTTON))
+        )
+        forgot_password_option_button.click()
+
+    def alerts_sign_in_page(self, expected_alert_message):
+        if "email address required" in expected_alert_message:
+            alert = WebDriverWait(self.driver, 3).until(
+                EC.presence_of_element_located((By.XPATH, SignInPageElements.ERROR_EMAIL_ADDRESS_REQUIRED))
+            )
+        elif "Invalid email address" in expected_alert_message:
+            alert = WebDriverWait(self.driver, 3).until(
+                EC.presence_of_element_located((By.XPATH, SignInPageElements.ERROR_INVALID_EMAIL))
+            )
+        elif "Password is required" in expected_alert_message:
+            alert = WebDriverWait(self.driver, 3).until(
+                EC.presence_of_element_located((By.XPATH, SignInPageElements.ERROR_PASSWORD_REQUIRED))
+            )
+        elif "Authentication failed" in expected_alert_message:
+            alert = WebDriverWait(self.driver, 3).until(
+                EC.presence_of_element_located((By.XPATH, SignInPageElements.ERROR_AUTHENTICATION_FAILED))
+            )
+        else:
+            assert False
+        alert.is_displayed()

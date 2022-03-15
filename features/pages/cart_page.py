@@ -43,7 +43,9 @@ class CartPage(Browser):
                                           CartPageElements.DELETE_PRODUCT_BUTTON).click()
 
     def is_alert_active_empty_cart(self):
-        alert_element = self.driver.find_element_by_xpath(CartPageElements.ALERT_EMPTY_SHOPPING_CART)
+        alert_element = WebDriverWait(self.driver, 3).until(
+            EC.presence_of_element_located((By.XPATH, CartPageElements.ALERT_EMPTY_SHOPPING_CART))
+        )
         assert alert_element.is_displayed()
 
     def proceed_to_checkout_button(self):
