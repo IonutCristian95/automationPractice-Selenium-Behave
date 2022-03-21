@@ -1,0 +1,1700 @@
+<!DOCTYPE HTML>
+
+<html>
+  <head>
+    <title>Behave Test Report</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <style type="text/css">
+      <!--
+body{font-size:0;color:#fff;margin:0;
+padding:0}.behave,td,th{font:400 11px "Lucida Grande",Helvetica,sans-serif;
+background:#fff;color:#000}.behave #behave-header,td #behave-header,
+th #behave-header{background:#65c400;color:#fff;height:8em}.behave
+#behave-header #expand-collapse p,td #behave-header #expand-collapse
+p,th #behave-header #expand-collapse p{float:right;margin:0 0 0 10px}
+.background h3,.behave .scenario h3,td .scenario h3,th .scenario h3{
+font-size:11px;padding:3px;margin:0;background:#65c400;color:#fff;
+font-weight:700}.background h3{font-size:1.2em;background:#666}.behave
+h1,td h1,th h1{margin:0 10px;padding:10px;font-family:'Lucida Grande',
+Helvetica,sans-serif;font-size:2em;position:absolute}.behave h4,td h4,
+th h4{margin-bottom:2px}.behave div.feature,td div.feature,th div.feature
+{padding:2px;margin:0 10px 5px}.behave div.examples,td div.examples,th
+div.examples{padding:0 0 0 1em}.behave .stats,td .stats,th .stats{margin:2em}
+.behave .summary ul.features li,td .summary ul.features li,th .summary
+ul.features li{display:inline}.behave .step_name,td .step_name,th .step_name
+{float:left}.behave .step_file,td .step_file,th .step_file{text-align:right;
+color:#999}.behave .step_file a,td .step_file a,th .step_file a{color:#999}.behave
+.scenario_file,td .scenario_file,th .scenario_file{float:right;color:#999}.behave
+.tag,td .tag,th .tag{font-weight:700;color:#246ac1}.behave .backtrace,td
+.backtrace,th .backtrace{margin-top:0;margin-bottom:0;margin-left:1em;color:#000}
+.behave a,td a,th a{text-decoration:underline;color:#be5c00;margin-right:0.5em}
+.behave a:hover,td a:hover,th a:hover{text-decoration:none}.behave a:visited,td
+a:visited,th a:visited{font-weight:400}.behave a div.examples,td a div.examples,
+th a div.examples{margin:5px 0 5px 15px;color:#000}.behave .outline table,
+td .outline table,th .outline table{margin:0 0 5px 10px}.behave table,
+td table,th table{border-collapse:collapse}.behave table td,td table td,
+th table td{padding:3px 3px 3px 5px}.behave table td.failed,td table td.failed,
+th table td.failed{border-left:5px solid #c20000;border-bottom:1px solid
+#c20000;background:#fffbd3;color:#c20000}.behave table td.passed,td table
+td.passed,th table td.passed{border-left:5px solid #65c400;border-bottom:1px
+solid #65c400;background:#dbffb4;color:#3d7700}.behave table td.skipped,td
+table td.skipped,th table td.skipped{border-left:5px solid #0ff;border-bottom:1px
+solid #0ff;background:#e0ffff;color:#011}.behave table td.pending,.behave table
+td.undefined,td table td.pending,td table td.undefined,th table td.pending,th table
+td.undefined{border-left:5px solid #faf834;border-bottom:1px solid #faf834;
+background:#fcfb98;color:#131313}.behave table td.message,td table td.message,th
+table td.message{border-left:5px solid #0ff;border-bottom:1px solid #0ff;
+background:#e0ffff;color:#011}.behave ol,td ol,th ol{list-style:none;
+margin:0;padding:0}.behave ol li.step,td ol li.step,th ol li.step{
+padding:3px 3px 3px 18px;margin:5px 0 5px 5px}.behave ol li,td ol li,th
+ol li{margin:0 0 0 1em;padding:0 0 0 .2em}.behave ol li span.param,td
+ol li span.param,th ol li span.param{font-weight:700}.behave ol li.failed,td
+ol li.failed,th ol li.failed{border-left:5px solid #c20000;border-bottom:1px
+solid #c20000;background:#fffbd3;color:#c20000}.behave ol li.passed,td ol
+li.passed,th ol li.passed{border-left:5px solid #65c400;border-bottom:1px
+solid #65c400;background:#dbffb4;color:#3d7700}.behave ol li.skipped,td ol
+li.skipped,th ol li.skipped{border-left:5px solid #0ff;border-bottom:1px
+solid #0ff;background:#e0ffff;color:#011}.behave ol li.pending,.behave ol
+li.undefined,td ol li.pending,td ol li.undefined,th ol li.pending,th ol
+li.undefined{border-left:5px solid #faf834;border-bottom:1px solid
+#faf834;background:#fcfb98;color:#131313}.behave ol li.message,td ol
+li.message,th ol li.message{border-left:5px solid #0ff;border-bottom:1px
+solid #0ff;background:#e0ffff;color:#011;margin-left:10px}.behave #summary,td
+#summary,th #summary{margin:0;padding:5px 10px;text-align:right;top:0;
+right:0;float:right}.behave #summary p,td #summary p,th #summary
+p{margin:0 0 0 2px}.behave #summary #totals,td #summary #totals,th
+#summary #totals{font-size:1.2em} h3.failed,#behave-header.failed{background:
+#c40d0d !important} h3.undefined,#behave-header.undefined{background:#faf834
+ !important; color:#000 !important} #behave-header.failed a{color:#fff} pre {
+ white-space: pre-wrap} .step_duration{padding-left:1em}
+-->
+    </style>
+    <script type="text/javascript">
+      <!--
+function Collapsible_toggle(id)
+{
+    var elem = document.getElementById(id);
+    elem.style.display = (elem.style.display == 'none' ? 'block' : 'none');
+    return false;
+}
+
+function Collapsible_expandAll(className)
+{
+    var elems = document.getElementsByClassName(className);
+    for (var i=0; i < elems.length; i++) {
+        elems[i].style.display = 'block';
+    }
+}
+
+function Collapsible_collapseAll(className)
+{
+    var elems = document.getElementsByClassName(className);
+    for (var i=0; i < elems.length; i++) {
+        elems[i].style.display = 'none';
+    }
+}
+
+function Collapsible_expandAllFailed()
+{
+    var elems = document.getElementsByClassName('failed');
+    for (var i=0; i < elems.length; i++) {
+        var elem = elems[i];
+        if (elem.nodeName == 'H3'){
+            elem.parentElement.getElementsByTagName('ol')[0].style.display = 'block';
+        }
+    }
+}
+-->
+    </script>
+  </head>
+  <body>
+    <div class="behave">
+      <div id="behave-header">
+        <div id="label">
+          <h1>Behave Test Report</h1>
+        </div>
+        <div id="summary">
+          <p id="totals">
+            <p id="feature_totals">Features: passed: 4</p>
+            <p id="scenario_totals">Scenarios: passed: 17</p>
+            <p id="step_totals">Steps: untested: 22, passed: 39</p>
+          </p>
+          <p id="duration">Finished in 309.3 seconds</p>
+          <div id="expand-collapse">
+            <a href="#" id="expander" onclick="Collapsible_expandAll('scenario_steps')">Expand All</a>
+            <span> | </span>
+            <a href="#" id="collapser" onclick="Collapsible_collapseAll('scenario_steps')">Collapse All</a>
+            <span> | </span>
+            <a href="#" id="failed_expander" onclick="Collapsible_expandAllFailed()">Expand All Failed</a>
+          </div>
+        </div>
+      </div>
+      <div class="feature">
+        <h2>
+          <span class="val">Feature: automationPractice Main Page test</span>
+        </h2>
+        <span/>
+      </div>
+      <div class="background">
+        <h3>
+          <span class="val">Background: </span>
+        </h3>
+        <ol/>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/automationPractice.feature:11</span>
+        <h3 onclick="Collapsible_toggle('scenario_0')">
+          <span class="val">Scenario Outline: Searching a product and getting results for that product -- @1.1 </span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_0">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(0.753s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">
+                <span>searchPage: user searches for product &quot;</span>
+                <b>dress</b>
+                <span>&quot; in the search bar</span>
+              </span>
+              <small class="step_duration">(1.120s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/search_page_steps.py:4</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Then </span>
+              <span class="step val">searchPage: relevant results are being displayed</span>
+              <small class="step_duration">(0.027s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/search_page_steps.py:10</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/automationPractice.feature:12</span>
+        <h3 onclick="Collapsible_toggle('scenario_1')">
+          <span class="val">Scenario Outline: Searching a product and getting results for that product -- @1.2 </span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_1">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(0.877s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">
+                <span>searchPage: user searches for product &quot;</span>
+                <b>shirt</b>
+                <span>&quot; in the search bar</span>
+              </span>
+              <small class="step_duration">(0.898s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/search_page_steps.py:4</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Then </span>
+              <span class="step val">searchPage: relevant results are being displayed</span>
+              <small class="step_duration">(0.039s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/search_page_steps.py:10</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/automationPractice.feature:15</span>
+        <h3 onclick="Collapsible_toggle('scenario_2')">
+          <span class="val">Scenario: User is accessing the account management page through the main page</span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_2">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(0.980s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user clicks on the Sign In button</span>
+              <small class="step_duration">(1.509s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:52</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">signInPage: user successfully logs in</span>
+              <small class="step_duration">(3.733s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/sign_in_page_steps.py:4</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user clicks on the account management button</span>
+              <small class="step_duration">(0.927s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:57</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Then </span>
+              <span class="step val">accountDetailsPage: user is on the account management page</span>
+              <small class="step_duration">(0.006s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/account_details_page_steps.py:3</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/automationPractice.feature:28</span>
+        <span class="tag">@smoke</span>
+        <h3 onclick="Collapsible_toggle('scenario_3')">
+          <span class="val">Scenario Outline: The user is subscribing to the newsletter -- @1.1 </span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_3">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(0.950s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">
+                <span>automationPractice: user inserts the email address &quot;</span>
+                <b>g.ionutcristian9511111111111@gmail.com</b>
+                <span>&quot;</span>
+              </span>
+              <small class="step_duration">(0.145s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:62</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user clicks the newsletter subscription button</span>
+              <small class="step_duration">(0.996s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:67</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Then </span>
+              <span class="step val">automationPractice: newsletter subscription confirmation message appears</span>
+              <small class="step_duration">(0.042s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:72</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/automationPractice.feature:37</span>
+        <span class="tag">@smoke</span>
+        <h3 onclick="Collapsible_toggle('scenario_4')">
+          <span class="val">Scenario Outline: User is already subscribed to the newsletter -- @1.1 </span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_4">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(0.946s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">
+                <span>automationPractice: user inserts the email address &quot;</span>
+                <b>g.ionutcristian9511@gmail.com</b>
+                <span>&quot;</span>
+              </span>
+              <small class="step_duration">(0.136s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:62</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user clicks the newsletter subscription button</span>
+              <small class="step_duration">(0.940s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:67</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Then </span>
+              <span class="step val">automationPractice: already subscribed alert message appears</span>
+              <small class="step_duration">(0.046s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:77</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/automationPractice.feature:46</span>
+        <span class="tag">@smoke</span>
+        <h3 onclick="Collapsible_toggle('scenario_5')">
+          <span class="val">Scenario Outline: User tries to subscribe to the newsletter with wrong email format -- @1.1 </span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_5">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(0.937s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">
+                <span>automationPractice: user inserts the email address &quot;</span>
+                <b>brenda</b>
+                <span>&quot;</span>
+              </span>
+              <small class="step_duration">(0.104s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:62</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user clicks the newsletter subscription button</span>
+              <small class="step_duration">(0.998s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:67</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Then </span>
+              <span class="step val">automationPractice: invalid email address error message appears</span>
+              <small class="step_duration">(0.038s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:82</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/automationPractice.feature:47</span>
+        <span class="tag">@smoke</span>
+        <h3 onclick="Collapsible_toggle('scenario_6')">
+          <span class="val">Scenario Outline: User tries to subscribe to the newsletter with wrong email format -- @1.2 </span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_6">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(1.541s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">
+                <span>automationPractice: user inserts the email address &quot;</span>
+                <b>@yahoo.com</b>
+                <span>&quot;</span>
+              </span>
+              <small class="step_duration">(0.105s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:62</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user clicks the newsletter subscription button</span>
+              <small class="step_duration">(0.994s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:67</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Then </span>
+              <span class="step val">automationPractice: invalid email address error message appears</span>
+              <small class="step_duration">(0.032s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:82</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/automationPractice.feature:50</span>
+        <span class="tag">@smoke9</span>
+        <h3 onclick="Collapsible_toggle('scenario_7')">
+          <span class="val">Scenario: User adds a discounted product in cart</span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_7">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(0.971s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/automationPractice.feature:58</span>
+        <h3 onclick="Collapsible_toggle('scenario_8')">
+          <span class="val">Scenario Outline: User searches a product that doesn't exist on the website and gets no results =&gt; no results alert is displayed -- @1.1 </span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_8">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(0.937s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">
+                <span>searchPage: user searches for product &quot;</span>
+                <b>alien</b>
+                <span>&quot; in the search bar</span>
+              </span>
+              <small class="step_duration">(1.165s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/search_page_steps.py:4</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Then </span>
+              <span class="step val">searchPage: no results alert is displayed</span>
+              <small class="step_duration">(0.025s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/search_page_steps.py:15</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/automationPractice.feature:59</span>
+        <h3 onclick="Collapsible_toggle('scenario_9')">
+          <span class="val">Scenario Outline: User searches a product that doesn't exist on the website and gets no results =&gt; no results alert is displayed -- @1.2 </span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_9">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(0.963s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">
+                <span>searchPage: user searches for product &quot;</span>
+                <b>cars</b>
+                <span>&quot; in the search bar</span>
+              </span>
+              <small class="step_duration">(1.129s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/search_page_steps.py:4</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Then </span>
+              <span class="step val">searchPage: no results alert is displayed</span>
+              <small class="step_duration">(0.012s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/search_page_steps.py:15</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="feature">
+        <h2>
+          <span class="val">Feature: Cart page automation</span>
+        </h2>
+        <span/>
+      </div>
+      <div class="background">
+        <h3>
+          <span class="val">Background: </span>
+        </h3>
+        <ol/>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/cart.feature:6</span>
+        <h3 onclick="Collapsible_toggle('scenario_10')">
+          <span class="val">Scenario: User successfully adds a product in the cart</span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_10">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(0.799s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user adds a product in cart</span>
+              <small class="step_duration">(0.027s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:11</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Then </span>
+              <span class="step val">automationPractice: user proceeds to view the cart from the pop up layer</span>
+              <small class="step_duration">(4.062s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:16</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/cart.feature:10</span>
+        <h3 onclick="Collapsible_toggle('scenario_11')">
+          <span class="val">Scenario: User successfully deletes a product from the cart</span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_11">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(1.030s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user adds a product in cart</span>
+              <small class="step_duration">(0.023s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:11</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user views the cart</span>
+              <small class="step_duration">(4.126s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:22</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">cartPage: user deletes the product from the cart</span>
+              <small class="step_duration">(3.061s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/cart_page_steps.py:18</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Then </span>
+              <span class="step val">cartPage: shopping cart is empty</span>
+              <small class="step_duration">(0.043s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/cart_page_steps.py:13</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/cart.feature:17</span>
+        <h3 onclick="Collapsible_toggle('scenario_12')">
+          <span class="val">Scenario: User successfully adds a product and completes the order using bankwire payment method</span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_12">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(1.198s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user adds a product in cart</span>
+              <small class="step_duration">(0.026s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:11</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user proceeds to checkout</span>
+              <small class="step_duration">(3.843s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:39</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">signInPage: user successfully logs in</span>
+              <small class="step_duration">(0.008s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/sign_in_page_steps.py:4</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">cartPage: user completes the required information</span>
+              <small class="step_duration">(2.050s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/cart_page_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">cartPage: user makes the order and pays by bankwire</span>
+              <small class="step_duration">(0.915s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/cart_page_steps.py:24</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Then </span>
+              <span class="step val">cartPage: user clicks the confirm order button</span>
+              <small class="step_duration">(3.765s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/cart_page_steps.py:34</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/cart.feature:26</span>
+        <h3 onclick="Collapsible_toggle('scenario_13')">
+          <span class="val">Scenario: User successfully adds a product and completes the order using cheque payment method</span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_13">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(1.481s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user adds a product in cart</span>
+              <small class="step_duration">(0.023s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:11</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user proceeds to checkout</span>
+              <small class="step_duration">(6.462s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:39</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user is already logged in</span>
+              <small class="step_duration">(0.015s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:47</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">cartPage: user completes the required information</span>
+              <small class="step_duration">(2.349s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/cart_page_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">cartPage: user makes the order and pays by cheque</span>
+              <small class="step_duration">(0.839s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/cart_page_steps.py:29</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Then </span>
+              <span class="step val">cartPage: user clicks the confirm order button</span>
+              <small class="step_duration">(1.947s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/cart_page_steps.py:34</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/cart.feature:35</span>
+        <h3 onclick="Collapsible_toggle('scenario_14')">
+          <span class="val">Scenario: User checks for two orders, one paid by bankwire, one by cheque</span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_14">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(0.953s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user is already logged in</span>
+              <small class="step_duration">(0.011s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:47</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user clicks on the account management button</span>
+              <small class="step_duration">(1.402s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:57</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">accountDetailsPage: user clicks on &quot;order history and details&quot; button</span>
+              <small class="step_duration">(1.403s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/account_details_page_steps.py:8</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Then </span>
+              <span class="step val">orderHistoryPage: user will view current orders - one paid by bankwire and one by cheque</span>
+              <small class="step_duration">(0.257s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/order_history_page_steps.py:4</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/cart.feature:42</span>
+        <h3 onclick="Collapsible_toggle('scenario_15')">
+          <span class="val">Scenario: User tries to complete the order without agreeing to the terms of service</span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_15">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(0.950s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user adds a product in cart</span>
+              <small class="step_duration">(0.049s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:11</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user proceeds to checkout</span>
+              <small class="step_duration">(3.511s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:39</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user is already logged in</span>
+              <small class="step_duration">(0.027s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:47</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">cartPage: user completes the required information</span>
+              <small class="step_duration">(2.136s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/cart_page_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="feature">
+        <h2>
+          <span class="val">Feature: Forgot Password page test</span>
+        </h2>
+        <span/>
+      </div>
+      <div class="background">
+        <h3>
+          <span class="val">Background: </span>
+        </h3>
+        <ol/>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/forgotPassword.feature:6</span>
+        <h3 onclick="Collapsible_toggle('scenario_16')">
+          <span class="val">Scenario: User tries to renew password using forgot password option</span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_16">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(1.195s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user is not logged in</span>
+              <small class="step_duration">(1.748s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:87</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user clicks on the Sign In button</span>
+              <small class="step_duration">(1.791s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:52</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">signInPage: user proceeds to forgot password page</span>
+              <small class="step_duration">(1.072s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/sign_in_page_steps.py:9</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">ForgotPasswordPage: user inserts his email and clicks the retrieve password button</span>
+              <small class="step_duration">(2.964s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/forgot_password_page_steps.py:4</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Then </span>
+              <span class="step val">ForgotPasswordPage: a confirmation alert appears</span>
+              <small class="step_duration">(0.032s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/forgot_password_page_steps.py:10</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/forgotPassword.feature:23</span>
+        <span class="tag">@smoke8</span>
+        <h3 onclick="Collapsible_toggle('scenario_17')">
+          <span class="val">Scenario Outline: User tries to renew password using wrong email format -- @1.1 </span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_17">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(4.552s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user is not logged in</span>
+              <small class="step_duration">(30.020s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:87</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user clicks on the Sign In button</span>
+              <small class="step_duration">(1.247s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:52</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">signInPage: user proceeds to forgot password page</span>
+              <small class="step_duration">(1.246s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/sign_in_page_steps.py:9</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">
+                <span>ForgotPasswordPage: user enters &quot;</span>
+                <b>asdfgs</b>
+                <span>&quot; and clicks the retrieve password button</span>
+              </span>
+              <small class="step_duration">(1.053s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/forgot_password_page_steps.py:15</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Then </span>
+              <span class="step val">
+                <span>ForgotPasswordPage: the &quot;</span>
+                <b>Invalid email address</b>
+                <span>&quot; appears</span>
+              </span>
+              <small class="step_duration">(0.057s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/forgot_password_page_steps.py:21</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/forgotPassword.feature:24</span>
+        <span class="tag">@smoke8</span>
+        <h3 onclick="Collapsible_toggle('scenario_18')">
+          <span class="val">Scenario Outline: User tries to renew password using wrong email format -- @1.2 </span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_18">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(1.285s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user is not logged in</span>
+              <small class="step_duration">(30.083s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:87</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user clicks on the Sign In button</span>
+              <small class="step_duration">(1.360s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:52</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">signInPage: user proceeds to forgot password page</span>
+              <small class="step_duration">(0.778s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/sign_in_page_steps.py:9</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">
+                <span>ForgotPasswordPage: user enters &quot;</span>
+                <b>asdfgs@yahoo.com</b>
+                <span>&quot; and clicks the retrieve password button</span>
+              </span>
+              <small class="step_duration">(0.773s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/forgot_password_page_steps.py:15</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Then </span>
+              <span class="step val">
+                <span>ForgotPasswordPage: the &quot;</span>
+                <b>no account registered for this email address</b>
+                <span>&quot; appears</span>
+              </span>
+              <small class="step_duration">(0.039s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/forgot_password_page_steps.py:21</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="feature">
+        <h2>
+          <span class="val">Feature: Login page test</span>
+        </h2>
+        <span/>
+      </div>
+      <div class="background">
+        <h3>
+          <span class="val">Background: </span>
+        </h3>
+        <ol/>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/login.feature:6</span>
+        <h3 onclick="Collapsible_toggle('scenario_19')">
+          <span class="val">Scenario: User successfully logs in</span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_19">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(1.319s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user is not logged in</span>
+              <small class="step_duration">(30.069s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:87</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user clicks on the Sign In button</span>
+              <small class="step_duration">(1.306s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:52</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">signInPage: user successfully logs in</span>
+              <small class="step_duration">(3.862s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/sign_in_page_steps.py:4</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Then </span>
+              <span class="step val">automationPractice: user gains access to his account</span>
+              <small class="step_duration">(0.033s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:92</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/login.feature:21</span>
+        <span class="tag">@smoke7</span>
+        <h3 onclick="Collapsible_toggle('scenario_20')">
+          <span class="val">Scenario Outline: User enters wrong credentials when he wants to sign in -- @1.1 </span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_20">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(0.862s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user is not logged in</span>
+              <small class="step_duration">(1.597s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:87</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user clicks on the Sign In button</span>
+              <small class="step_duration">(1.396s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:52</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">
+                <span>signInPage: user inserts &quot;</span>
+                <b>N/A</b>
+                <span>&quot; and &quot;</span>
+                <b>N/A</b>
+                <span>&quot;</span>
+              </span>
+              <small class="step_duration">(3.668s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/sign_in_page_steps.py:14</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Then </span>
+              <span class="step val">
+                <span>signInPage: the &quot;</span>
+                <b>email address required</b>
+                <span>&quot; alert appears</span>
+              </span>
+              <small class="step_duration">(0.037s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/sign_in_page_steps.py:19</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/login.feature:22</span>
+        <span class="tag">@smoke7</span>
+        <h3 onclick="Collapsible_toggle('scenario_21')">
+          <span class="val">Scenario Outline: User enters wrong credentials when he wants to sign in -- @1.2 </span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_21">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(1.226s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user is not logged in</span>
+              <small class="step_duration">(30.012s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:87</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user clicks on the Sign In button</span>
+              <small class="step_duration">(2.702s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:52</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">
+                <span>signInPage: user inserts &quot;</span>
+                <b>abcdef</b>
+                <span>&quot; and &quot;</span>
+                <b>N/A</b>
+                <span>&quot;</span>
+              </span>
+              <small class="step_duration">(3.633s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/sign_in_page_steps.py:14</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Then </span>
+              <span class="step val">
+                <span>signInPage: the &quot;</span>
+                <b>Invalid email address</b>
+                <span>&quot; alert appears</span>
+              </span>
+              <small class="step_duration">(0.029s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/sign_in_page_steps.py:19</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/login.feature:23</span>
+        <span class="tag">@smoke7</span>
+        <h3 onclick="Collapsible_toggle('scenario_22')">
+          <span class="val">Scenario Outline: User enters wrong credentials when he wants to sign in -- @1.3 </span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_22">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(1.871s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user is not logged in</span>
+              <small class="step_duration">(30.022s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:87</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user clicks on the Sign In button</span>
+              <small class="step_duration">(1.395s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:52</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">
+                <span>signInPage: user inserts &quot;</span>
+                <b>abdddd@yahoo.com</b>
+                <span>&quot; and &quot;</span>
+                <b>N/A</b>
+                <span>&quot;</span>
+              </span>
+              <small class="step_duration">(3.066s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/sign_in_page_steps.py:14</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Then </span>
+              <span class="step val">
+                <span>signInPage: the &quot;</span>
+                <b>Password is required</b>
+                <span>&quot; alert appears</span>
+              </span>
+              <small class="step_duration">(0.035s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/sign_in_page_steps.py:19</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+      <div class="scenario">
+        <span class="scenario_file">features/login.feature:24</span>
+        <span class="tag">@smoke7</span>
+        <h3 onclick="Collapsible_toggle('scenario_23')">
+          <span class="val">Scenario Outline: User enters wrong credentials when he wants to sign in -- @1.4 </span>
+        </h3>
+        <ol class="scenario_steps" id="scenario_23">
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Given </span>
+              <span class="step val">automationPractice: user is on the main page</span>
+              <small class="step_duration">(0.838s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:6</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user is not logged in</span>
+              <small class="step_duration">(30.042s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:87</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">automationPractice: user clicks on the Sign In button</span>
+              <small class="step_duration">(1.495s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/automationPractice_steps.py:52</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">When </span>
+              <span class="step val">
+                <span>signInPage: user inserts &quot;</span>
+                <b>abdddd@yahoo.com</b>
+                <span>&quot; and &quot;</span>
+                <b>ASDsd234$</b>
+                <span>&quot;</span>
+              </span>
+              <small class="step_duration">(3.669s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/sign_in_page_steps.py:14</span>
+            </div>
+            <span class="embed"/>
+          </li>
+          <li class="step passed">
+            <div class="step_name">
+              <span class="keyword">Then </span>
+              <span class="step val">
+                <span>signInPage: the &quot;</span>
+                <b>Authentication failed</b>
+                <span>&quot; alert appears</span>
+              </span>
+              <small class="step_duration">(0.033s)</small>
+            </div>
+            <div class="step_file">
+              <span>features/steps/sign_in_page_steps.py:19</span>
+            </div>
+            <span class="embed"/>
+          </li>
+        </ol>
+        <span/>
+      </div>
+    </div>
+  </body>
+</html>

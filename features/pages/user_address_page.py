@@ -122,3 +122,21 @@ class UserAddressPage(Browser):
         )
         insert_alias.clear()
         insert_alias.send_keys(alias)
+
+    def insert_details(self, first_name="Test", last_name="Test_last_name", company="C. Test",
+                       address_1="Test_street", address_2="Test_street", city="Philadelphia", state="Pennsylvania",
+                       zipcode="640057",home_phone="9999-999-999", mobile="1234-567-568",
+                       additional_info="This is my address", address_alias="Test_address"):
+        self.insert_first_name(first_name)
+        self.insert_last_name(last_name)
+        self.insert_company(company)
+        self.insert_address_line_1(address_1)
+        self.insert_address_line_2(address_2)
+        self.insert_city(city)
+        self.choose_state(state)
+        self.insert_zipcode(zipcode)
+        self.insert_country()
+        self.insert_home_phone(home_phone)
+        self.insert_mobile_phone(mobile)
+        self.insert_additional_info(additional_info)
+        self.insert_address_alias(address_alias)

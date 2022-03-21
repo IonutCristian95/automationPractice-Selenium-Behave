@@ -24,8 +24,8 @@ Feature: automationPractice Main Page test
         When automationPractice: user clicks the newsletter subscription button
         Then automationPractice: newsletter subscription confirmation message appears
     Examples:
-      |             email             |
-      | g.ionutcristian9511111111@gmail.com |
+      |                email                  |
+      | g.ionutcristian9511111111111@gmail.com |
 
     @smoke
     Scenario Outline: User is already subscribed to the newsletter
