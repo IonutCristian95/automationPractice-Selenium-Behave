@@ -1,9 +1,8 @@
-from time import sleep
-
 from features.browser import Browser
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 class AutomationPracticeElements(object):
@@ -26,6 +25,7 @@ class AutomationPracticeElements(object):
     NEWSLETTER_ALREADY_SUBSCRIBED_ALERT = '//p[contains(@class, "alert-danger") and contains(., "email address is ' \
                                           'already registered")] '
     NEWSLETTER_INVALID_EMAIL_ALERT = '//p[contains(text(), "Invalid email address.")]'
+    VIEW_PRODUCT = '(//li//ancestor::span[contains(., "More")]//parent::a)'
 
 
 class AutomationPracticePage(Browser):
@@ -43,7 +43,6 @@ class AutomationPracticePage(Browser):
         )
         self.driver.execute_script("arguments[0].click();", add_to_cart_button)
 
-    # Proceed to checkout after adding a product in cart
     def proceed_to_checkout(self):
         proceed_button = WebDriverWait(self.driver, 5000).until(
             EC.presence_of_element_located((By.XPATH, AutomationPracticeElements.LAYER_CART_PROCEED_TO_CHECKOUT_BUTTON))
@@ -69,6 +68,9 @@ class AutomationPracticePage(Browser):
         close_btn.click()
 
     def is_user_already_logged_in(self):
+        """
+        This function checks whether the user is logged in by checking for the presence of the sign out button
+        """
         sign_out_btn_present = self.driver.find_elements_by_xpath(AutomationPracticeElements.SIGN_OUT_BUTTON)
         if sign_out_btn_present[0]:
             assert True
@@ -123,9 +125,9 @@ class AutomationPracticePage(Browser):
         if len(sign_out_btn) > 0:
             sign_out_btn[0].click()
 
-    def logged_in_facilities_present(self):
+    def logged_in_options_present(self):
         """
-            The log out button and account management button confirm that the user is logged in
+            The presence of the log out button and account management button confirm that the user is logged in
         """
         account_management_btn = WebDriverWait(self.driver, 3000).until(
             EC.presence_of_element_located((By.XPATH, AutomationPracticeElements.ACCOUNT_MANAGEMENT_BUTTON))
@@ -137,3 +139,16 @@ class AutomationPracticePage(Browser):
             assert True
         else:
             assert False
+
+    def view_product(self, product):
+        """
+        :param product: Represents the item counter in the product list displayed on the front page.
+        """
+        product_hover_over_img = WebDriverWait(self.driver, 3).until(
+            EC.presence_of_element_located((By.XPATH, f'(//img[@itemprop="image"])[{product}]//ancestor::li'))
+        )
+
+        view_product_btn = WebDriverWait(self.driver, 3).until(
+            EC.presence_of_element_located((By.XPATH, AutomationPracticeElements.VIEW_PRODUCT+f'[{product}]'))
+        )
+        ActionChains(self.driver).move_to_element(product_hover_over_img).click(view_product_btn).perform()

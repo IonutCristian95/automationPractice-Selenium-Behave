@@ -18,42 +18,40 @@ Feature: automationPractice Main Page test
         When automationPractice: user clicks on the account management button
         Then accountDetailsPage: user is on the account management page
 
-    @smoke
     Scenario Outline: The user is subscribing to the newsletter
         When automationPractice: user inserts the email address "<email>"
         When automationPractice: user clicks the newsletter subscription button
         Then automationPractice: newsletter subscription confirmation message appears
     Examples:
-      |                email                  |
-      | g.ionutcristian9511111111111@gmail.com |
+      |                     email                       |
+      |    test.email.automation.practice.111111110@gmail.com   |
 
-    @smoke
     Scenario Outline: User is already subscribed to the newsletter
         When automationPractice: user inserts the email address "<email>"
         When automationPractice: user clicks the newsletter subscription button
         Then automationPractice: already subscribed alert message appears
     Examples:
-      |             email             |
-      | g.ionutcristian9511@gmail.com |
+      |                     email                  |
+      | test.email.automation.practice.111111110@gmail.com |
 
-    @smoke
     Scenario Outline: User tries to subscribe to the newsletter with wrong email format
         When automationPractice: user inserts the email address "<email>"
         When automationPractice: user clicks the newsletter subscription button
         Then automationPractice: invalid email address error message appears
     Examples:
-        |   email    |
-        |   brenda   |
+        |    email   |
+        |    test    |
         | @yahoo.com |
 
-    @smoke9
     Scenario: User adds a discounted product in cart
-
+        When automationPractice: user adds a discounted product in cart
+        When automationPractice: user proceeds to view the cart from the pop up layer
+        Then cartPage: the discounted product appears in the shopping cart
 
     Scenario Outline: User searches a product that doesn't exist on the website and gets no results => no results alert is displayed
         When searchPage: user searches for product "<product>" in the search bar
         Then searchPage: no results alert is displayed
     Examples:
-        | product |
-        |  alien  |
-        |  cars   |
+        |   product   |
+        |   hardware  |
+        |   electric  |

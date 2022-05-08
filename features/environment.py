@@ -7,6 +7,9 @@ from features.pages.forgot_password_page import ForgotPasswordPage
 from features.pages.account_details_page import AccountDetails
 from features.pages.search_page import SearchPage
 from features.pages.order_history_page import OrderHistoryPage
+from features.pages.wishlist_page import WishlistPage
+from features.pages.product_page import ProductPage
+
 
 def before_all(context):
     context.email = get_user_credentials()[0]
@@ -20,6 +23,8 @@ def before_all(context):
     context.forgot_password_page = ForgotPasswordPage()
     context.automationPractice_page = AutomationPracticePage()
     context.account_details_page = AccountDetails()
+    context.wishlist_page = WishlistPage()
+    context.product_page = ProductPage()
     context.automationPractice_page.navigate_to_automationPractice_main_page()
 
 

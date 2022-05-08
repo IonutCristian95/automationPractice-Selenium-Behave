@@ -4,11 +4,13 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from time import sleep
 
+
 class CartPageElements(object):
     INCREASE_QUANTITY_BUTTON = '//a[@title="Add"]'
     DECREASE_QUANTITY_BUTTON = '//a[@title="Subtract"]'
     DELETE_PRODUCT_BUTTON = '//a[@title="Delete"]'
     ALERT_EMPTY_SHOPPING_CART = '//p[text()="Your shopping cart is empty."]'
+    PRICE_REDUCTION = '//span[@class="price-percent-reduction small"]'
     PRODUCT_IN_CART = '(//tbody//tr)'
     PROCEED_TO_CHECKOUT = '//p[contains(@class, "cart_navigation")]//a[@title="Proceed to checkout"]'
     PROCESS_ADDRESS_BUTTON = '//button[@name="processAddress"]'
@@ -43,7 +45,7 @@ class CartPage(Browser):
                                           CartPageElements.DELETE_PRODUCT_BUTTON).click()
 
     def is_alert_active_empty_cart(self):
-        alert_element = WebDriverWait(self.driver, 3).until(
+        alert_element = WebDriverWait(self.driver, 5).until(
             EC.presence_of_element_located((By.XPATH, CartPageElements.ALERT_EMPTY_SHOPPING_CART))
         )
         assert alert_element.is_displayed()
@@ -110,17 +112,27 @@ class CartPage(Browser):
             assert False
 
     def delete_products_in_cart(self):
-        products_list = self.driver.find_elements_by_xpath(CartPageElements.PRODUCT_IN_CART)
-        for i in range(len(products_list)):
+        products_delete_btn_list = self.driver.find_elements_by_xpath(CartPageElements.DELETE_PRODUCT_BUTTON)
+        for product in products_delete_btn_list:
             try:
-                self.delete_a_specific_product(0)
+                product.click()
             except Exception as e:
                 print(e)
                 return
-            sleep(1500)
+            sleep(3)
 
     def click_confirm_order_btn(self):
         confirm_btn = WebDriverWait(self.driver, 5000).until(
             EC.presence_of_element_located((By.XPATH, CartPageElements.CONFIRM_ORDER_BUTTON))
         )
         confirm_btn.click()
+
+    def check_for_price_reduction(self):
+        promotion = WebDriverWait(self.driver, 3).until(
+            EC.presence_of_element_located((By.XPATH, CartPageElements.PRICE_REDUCTION))
+        )
+
+        if promotion.is_displayed():
+            assert True
+        else:
+            assert False

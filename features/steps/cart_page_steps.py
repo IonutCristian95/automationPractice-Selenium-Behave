@@ -15,10 +15,9 @@ def step_impl(context):
     context.cart_page.is_alert_active_empty_cart()
 
 
-@when('cartPage: user deletes the product from the cart')
+@when('cartPage: user deletes the products from the cart')
 def step_impl(context):
-    context.cart_page.delete_a_specific_product(1)
-    sleep(3)
+    context.cart_page.delete_products_in_cart()
 
 
 @when('cartPage: user makes the order and pays by bankwire')
@@ -34,3 +33,18 @@ def step_impl(context):
 @then('cartPage: user clicks the confirm order button')
 def step_impl(context):
     context.cart_page.click_confirm_order_btn()
+
+
+@then('cartPage: user increases the quantity of the product')
+def step_impl(context):
+    context.cart_page.increase_quantity_of_a_specific_product(1)
+    sleep(2)
+    context.cart_page.decrease_quantity_of_a_specific_product(1)
+    sleep(2)
+    context.cart_page.increase_quantity_of_a_specific_product(1)
+    sleep(2)
+
+
+@then('cartPage: the discounted product appears in the shopping cart')
+def step_impl(context):
+    context.cart_page.check_for_price_reduction()

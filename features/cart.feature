@@ -10,7 +10,7 @@ Feature: Cart page automation
     Scenario: User successfully deletes a product from the cart
         When automationPractice: user adds a product in cart
         When automationPractice: user views the cart
-        When cartPage: user deletes the product from the cart
+        When cartPage: user deletes the products from the cart
         Then cartPage: shopping cart is empty
 
 

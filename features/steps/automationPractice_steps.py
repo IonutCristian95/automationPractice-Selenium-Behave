@@ -13,6 +13,7 @@ def step_impl(context):
     context.automationPractice_page.add_to_cart(1)
 
 
+@when('automationPractice: user proceeds to view the cart from the pop up layer')
 @then('automationPractice: user proceeds to view the cart from the pop up layer')
 def step_impl(context):
     context.automationPractice_page.proceed_to_checkout()
@@ -26,16 +27,6 @@ def step_impl(context):
     context.automationPractice_page.click_view_cart_button()
 
 
-@then('automationPractice: user increases the quantity of the product')
-def step_impl(context):
-    context.cart_page.increase_quantity_of_a_specific_product(1)
-    sleep(2)
-    context.cart_page.decrease_quantity_of_a_specific_product(1)
-    sleep(2)
-    context.cart_page.increase_quantity_of_a_specific_product(1)
-    sleep(2)
-
-
 @when('automationPractice: user proceeds to checkout')
 def step_impl(context):
     # Proceeds from the main page to the cart page
@@ -47,6 +38,25 @@ def step_impl(context):
 @when('automationPractice: user is already logged in')
 def step_impl(context):
     context.automationPractice_page.is_user_already_logged_in()
+
+
+@when('automationPractice: user is not logged in')
+def step_impl(context):
+    context.automationPractice_page.user_logged_out()
+
+
+@when('automationPractice: user logs in')
+def step_impl(context):
+    try:
+        context.automationPractice_page.click_sign_in_button()
+        sleep(2)
+        context.sign_in_page.sign_in(context.email, context.password)
+        sleep(2)
+        context.automationPractice_page.navigate_to_automationPractice_main_page()
+    except Exception as e:
+        print(e)
+    finally:
+        assert True
 
 
 @when('automationPractice: user clicks on the Sign In button')
@@ -84,11 +94,16 @@ def step_impl(context):
     context.automationPractice_page.newsletter_invalid_email_error()
 
 
-@when('automationPractice: user is not logged in')
-def step_impl(context):
-    context.automationPractice_page.user_logged_out()
-
-
 @then('automationPractice: user gains access to his account')
 def step_impl(context):
-    context.automationPractice_page.logged_in_facilities_present()
+    context.automationPractice_page.logged_in_options_present()
+
+
+@when('automationPractice: user clicks on a product')
+def step_impl(context):
+    context.automationPractice_page.view_product(1)
+
+
+@when('automationPractice: user adds a discounted product in cart')
+def step_impl(context):
+    context.automationPractice_page.add_to_cart(7)
